@@ -123,7 +123,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [512, 184.0]
+    coordinate: [536, 264.0]
     rotation: 0
     state: enabled
 - name: epy_block_0
@@ -385,7 +385,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 140.0]
+    coordinate: [864, 220.0]
     rotation: 0
     state: enabled
 - name: qtgui_waterfall_sink_x_0
@@ -446,7 +446,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 292.0]
+    coordinate: [864, 372.0]
     rotation: 0
     state: enabled
 - name: soapy_hackrf_source_0
@@ -469,7 +469,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [216, 164.0]
+    coordinate: [240, 244.0]
     rotation: 0
     state: enabled
 
