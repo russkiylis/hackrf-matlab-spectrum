@@ -103,7 +103,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 20e6
+    value: 1e6
   states:
     bus_sink: false
     bus_source: false
@@ -387,7 +387,7 @@ blocks:
     bus_structure: null
     coordinate: [864, 220.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_waterfall_sink_x_0
   id: qtgui_waterfall_sink_x
   parameters:

@@ -22,6 +22,7 @@ from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 from gnuradio import soapy
+import hackrf_iq_gen_epy_block_0 as epy_block_0  # embedded python block
 import sip
 import threading
 
@@ -63,7 +64,7 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.sampling_rate = sampling_rate = 20e6
+        self.sampling_rate = sampling_rate = 1e6
         self.file_dir = file_dir = "/media/psf/hackrf-matlab-spectrum/iq-files"
         self.chunk_time = chunk_time = 1
         self.center_freq = center_freq = 2.405e9
@@ -128,12 +129,14 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.qwidget(), Qt.QWidget)
 
         self.top_layout.addWidget(self._qtgui_waterfall_sink_x_0_win)
+        self.epy_block_0 = epy_block_0.blk(file_dir=file_dir, sampling_rate=sampling_rate, center_freq=center_freq, bandwidth=bandwidth, chunk_time=chunk_time, queue_depth=4)
         self.blocks_correctiq_0 = blocks.correctiq()
 
 
         ##################################################
         # Connections
         ##################################################
+        self.connect((self.blocks_correctiq_0, 0), (self.epy_block_0, 0))
         self.connect((self.blocks_correctiq_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.soapy_hackrf_source_0, 0), (self.blocks_correctiq_0, 0))
 
@@ -152,6 +155,7 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
     def set_sampling_rate(self, sampling_rate):
         self.sampling_rate = sampling_rate
         self.set_bandwidth(self.sampling_rate)
+        self.epy_block_0.sampling_rate = self.sampling_rate
         self.qtgui_waterfall_sink_x_0.set_frequency_range(self.center_freq, self.sampling_rate)
         self.soapy_hackrf_source_0.set_sample_rate(0, self.sampling_rate)
 
@@ -160,18 +164,21 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
 
     def set_file_dir(self, file_dir):
         self.file_dir = file_dir
+        self.epy_block_0.file_dir = self.file_dir
 
     def get_chunk_time(self):
         return self.chunk_time
 
     def set_chunk_time(self, chunk_time):
         self.chunk_time = chunk_time
+        self.epy_block_0.chunk_time = self.chunk_time
 
     def get_center_freq(self):
         return self.center_freq
 
     def set_center_freq(self, center_freq):
         self.center_freq = center_freq
+        self.epy_block_0.center_freq = self.center_freq
         self.qtgui_waterfall_sink_x_0.set_frequency_range(self.center_freq, self.sampling_rate)
         self.soapy_hackrf_source_0.set_frequency(0, self.center_freq)
 
@@ -180,6 +187,7 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
 
     def set_bandwidth(self, bandwidth):
         self.bandwidth = bandwidth
+        self.epy_block_0.bandwidth = self.bandwidth
         self.soapy_hackrf_source_0.set_bandwidth(0, self.bandwidth)
 
 

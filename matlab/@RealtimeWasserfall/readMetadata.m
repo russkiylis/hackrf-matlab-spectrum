@@ -12,4 +12,8 @@ function json_line = readMetadata(obj)
             pause(0.05);
         end
     end
+
+    % Тут у нас есть строчка из metadata.jsonl. Декодируем её.
+    obj.metadata = jsondecode(json_line);
+
 end

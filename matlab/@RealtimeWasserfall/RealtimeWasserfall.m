@@ -7,14 +7,17 @@ classdef RealtimeWasserfall < handle
         iq_dir              % Папка с IQ-файлами
 
         metadata_path       % Путь к jsonl-metadata
-        metadata_fid        % FID jsonl-metadata
-
+        metadata_fid = -1   % FID jsonl-metadata
+        
+        metadata            % Структура с метаданными
+        
+        iq_collected        % Прочитанные комплексные значения
     end
 
 
 
 
-    
+
     methods
 
         % Конструктор
@@ -36,9 +39,19 @@ classdef RealtimeWasserfall < handle
             end
 
         end
+        
+        % Деструктор
+        function delete(obj)
+            if obj.metadata_fid ~= -1
+                fclose(obj.metadata_fid);   % Закрываем файл jsonl
+                obj.metadata_fid = -1;
+                delete(obj.metadata_path);
+            end
+        end
 
         obj = purge(obj);
         json_line = readMetadata(obj);
+        obj = readIQ(obj, delete_files_bool);
 
     end
 
