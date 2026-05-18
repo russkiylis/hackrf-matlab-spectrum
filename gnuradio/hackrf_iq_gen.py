@@ -65,9 +65,9 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         ##################################################
         self.sampling_rate = sampling_rate = 20e6
         self.file_dir = file_dir = "/media/psf/hackrf-matlab-spectrum/iq-files"
-        self.chunk_time = chunk_time = 0.1
+        self.chunk_time = chunk_time = 1
         self.center_freq = center_freq = 2.405e9
-        self.bandwidth = bandwidth = 20e6
+        self.bandwidth = bandwidth = sampling_rate
 
         ##################################################
         # Blocks
@@ -76,7 +76,7 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         self._center_freq_range = qtgui.Range(20e6, 5980e6, 100e4, 2.405e9, 200)
         self._center_freq_win = qtgui.RangeWidget(self._center_freq_range, self.set_center_freq, "Center Freq", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._center_freq_win)
-        self._bandwidth_range = qtgui.Range(1e6, 20e6, 1e6, 20e6, 200)
+        self._bandwidth_range = qtgui.Range(1e6, 20e6, 1e6, sampling_rate, 200)
         self._bandwidth_win = qtgui.RangeWidget(self._bandwidth_range, self.set_bandwidth, "'bandwidth'", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._bandwidth_win)
         self.soapy_hackrf_source_0 = None
@@ -91,8 +91,8 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         self.soapy_hackrf_source_0.set_bandwidth(0, bandwidth)
         self.soapy_hackrf_source_0.set_frequency(0, center_freq)
         self.soapy_hackrf_source_0.set_gain(0, 'AMP', False)
-        self.soapy_hackrf_source_0.set_gain(0, 'LNA', min(max(20, 0.0), 40.0))
-        self.soapy_hackrf_source_0.set_gain(0, 'VGA', min(max(20, 0.0), 62.0))
+        self.soapy_hackrf_source_0.set_gain(0, 'LNA', min(max(24, 0.0), 40.0))
+        self.soapy_hackrf_source_0.set_gain(0, 'VGA', min(max(24, 0.0), 62.0))
         self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
             1024, #size
             window.WIN_BLACKMAN_hARRIS, #wintype
@@ -151,6 +151,7 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
 
     def set_sampling_rate(self, sampling_rate):
         self.sampling_rate = sampling_rate
+        self.set_bandwidth(self.sampling_rate)
         self.qtgui_waterfall_sink_x_0.set_frequency_range(self.center_freq, self.sampling_rate)
         self.soapy_hackrf_source_0.set_sample_rate(0, self.sampling_rate)
 

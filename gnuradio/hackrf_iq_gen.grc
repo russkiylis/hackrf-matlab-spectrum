@@ -45,7 +45,7 @@ blocks:
     start: 1e6
     step: 1e6
     stop: 20e6
-    value: 20e6
+    value: sampling_rate
     widget: counter_slider
   states:
     bus_sink: false
@@ -79,7 +79,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '0.1'
+    value: '1'
   states:
     bus_sink: false
     bus_source: false
@@ -387,7 +387,7 @@ blocks:
     bus_structure: null
     coordinate: [864, 220.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_waterfall_sink_x_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -459,12 +459,12 @@ blocks:
     center_freq: center_freq
     comment: ''
     dev_args: hackrf=0
-    gain: '20'
+    gain: '24'
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: sampling_rate
     type: fc32
-    vga: '20'
+    vga: '24'
   states:
     bus_sink: false
     bus_source: false
