@@ -459,12 +459,12 @@ blocks:
     center_freq: center_freq
     comment: ''
     dev_args: hackrf=0
-    gain: '24'
+    gain: '20'
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: sampling_rate
     type: fc32
-    vga: '24'
+    vga: '20'
   states:
     bus_sink: false
     bus_source: false

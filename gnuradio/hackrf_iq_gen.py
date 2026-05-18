@@ -91,8 +91,8 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         self.soapy_hackrf_source_0.set_bandwidth(0, bandwidth)
         self.soapy_hackrf_source_0.set_frequency(0, center_freq)
         self.soapy_hackrf_source_0.set_gain(0, 'AMP', False)
-        self.soapy_hackrf_source_0.set_gain(0, 'LNA', min(max(24, 0.0), 40.0))
-        self.soapy_hackrf_source_0.set_gain(0, 'VGA', min(max(24, 0.0), 62.0))
+        self.soapy_hackrf_source_0.set_gain(0, 'LNA', min(max(20, 0.0), 40.0))
+        self.soapy_hackrf_source_0.set_gain(0, 'VGA', min(max(20, 0.0), 62.0))
         self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
             1024, #size
             window.WIN_BLACKMAN_hARRIS, #wintype
