@@ -12,6 +12,13 @@ classdef RealtimeWasserfall < handle
         metadata            % Структура с метаданными
         
         iq_collected        % Прочитанные комплексные значения
+        wasserfall_data     % Матрица спектра для водопада
+        
+        % Для отображения
+        wasserfall_figure
+        wasserfall_axes
+        wasserfall_image
+
     end
 
 
@@ -51,7 +58,8 @@ classdef RealtimeWasserfall < handle
 
         obj = purge(obj);
         json_line = readMetadata(obj);
-        obj = readIQ(obj, delete_files_bool);
+        [raw_i, raw_q] = readIQ(obj, delete_files_bool);
+        obj = drawWasserfall(obj, fft_size, isdB, visualized_ffts_amount, window)
 
     end
 

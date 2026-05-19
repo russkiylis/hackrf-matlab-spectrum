@@ -66,7 +66,7 @@ blocks:
     start: 20e6
     step: 100e4
     stop: 5980e6
-    value: 2.405e9
+    value: 100e6
     widget: counter_slider
   states:
     bus_sink: false
@@ -79,7 +79,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1'
+    value: '0.1'
   states:
     bus_sink: false
     bus_source: false
@@ -440,7 +440,7 @@ blocks:
     nconnections: '1'
     showports: 'False'
     type: complex
-    update_time: '0.01'
+    update_time: '1'
     wintype: window.WIN_BLACKMAN_hARRIS
   states:
     bus_sink: false

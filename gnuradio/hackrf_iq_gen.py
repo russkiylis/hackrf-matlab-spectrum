@@ -66,15 +66,15 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         ##################################################
         self.sampling_rate = sampling_rate = 1e6
         self.file_dir = file_dir = "/media/psf/hackrf-matlab-spectrum/iq-files"
-        self.chunk_time = chunk_time = 1
-        self.center_freq = center_freq = 2.405e9
+        self.chunk_time = chunk_time = 0.1
+        self.center_freq = center_freq = 100e6
         self.bandwidth = bandwidth = sampling_rate
 
         ##################################################
         # Blocks
         ##################################################
 
-        self._center_freq_range = qtgui.Range(20e6, 5980e6, 100e4, 2.405e9, 200)
+        self._center_freq_range = qtgui.Range(20e6, 5980e6, 100e4, 100e6, 200)
         self._center_freq_win = qtgui.RangeWidget(self._center_freq_range, self.set_center_freq, "Center Freq", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._center_freq_win)
         self._bandwidth_range = qtgui.Range(1e6, 20e6, 1e6, sampling_rate, 200)
@@ -103,7 +103,7 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
             1, #number of inputs
             None # parent
         )
-        self.qtgui_waterfall_sink_x_0.set_update_time(0.01)
+        self.qtgui_waterfall_sink_x_0.set_update_time(1)
         self.qtgui_waterfall_sink_x_0.enable_grid(False)
         self.qtgui_waterfall_sink_x_0.enable_axis_labels(True)
 

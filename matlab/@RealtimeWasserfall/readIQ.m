@@ -1,4 +1,4 @@
-function obj = readIQ(obj, delete_files_bool)
+function [raw_i, raw_q] = readIQ(obj, delete_files_bool)
 % Здесь читаются IQ-файлы. Для этого используется получаенные из jsonl
 % метаданные
 

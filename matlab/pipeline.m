@@ -18,5 +18,6 @@ while true
     wasserfall.readIQ();
     
     % Далее выводим сонограмму
+    wasserfall.drawWasserfall(1024, false, 100, "blackman-harris");
 
 end
