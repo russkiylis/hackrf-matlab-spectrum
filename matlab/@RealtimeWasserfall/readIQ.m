@@ -39,6 +39,7 @@ function [raw_i, raw_q] = readIQ(obj, delete_files_bool)
     end
     raw_i = raw_iq(1:2:numel(raw_iq));
     raw_q = raw_iq(2:2:numel(raw_iq));
+    % obj.iq_collected = [obj.iq_collected complex(raw_i, raw_q)];
     obj.iq_collected = complex(raw_i, raw_q);
     
     % Удаляем файл

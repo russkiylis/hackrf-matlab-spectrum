@@ -6,11 +6,16 @@ function json_line = readMetadata(obj)
     json_line = -1;
     while json_line == -1
         cr_pos = ftell(obj.metadata_fid);           % Запоминаем позицию каретки
-        json_line = fgetl(obj.metadata_fid);        % Пытаемся читать строчку
+        json_line = fgets(obj.metadata_fid);        % Пытаемся читать строчку
         if json_line == -1
             fseek(obj.metadata_fid, cr_pos, "bof"); % Если строка не готова, возвращаемся взад
-            pause(0.05);
+        else
+            if ~endsWith(json_line, newline)
+                fseek(obj.metadata_fid, cr_pos, "bof"); % Если строка не готова, возвращаемся взад
+                json_line = -1;
+            end
         end
+        pause(0.001);
     end
 
     % Тут у нас есть строчка из metadata.jsonl. Декодируем её.

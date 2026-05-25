@@ -4,8 +4,6 @@
 
 % Программа будет ждать открытия GNU-Radio 30 секунд, а затем закроется
 
-clear; clc;
-
 wasserfall = RealtimeWasserfall();
 
 while true
@@ -18,6 +16,6 @@ while true
     wasserfall.readIQ();
     
     % Далее выводим сонограмму
-    wasserfall.drawWasserfall(1024, false, 100, "blackman-harris");
+    wasserfall.drawWasserfall(131072, 1024, true, 1024, "blackman-harris");
 
 end

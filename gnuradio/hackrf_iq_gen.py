@@ -23,7 +23,6 @@ from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 from gnuradio import soapy
 import hackrf_iq_gen_epy_block_0 as epy_block_0  # embedded python block
-import sip
 import threading
 
 
@@ -64,9 +63,9 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.sampling_rate = sampling_rate = 1e6
+        self.sampling_rate = sampling_rate = 20e6
         self.file_dir = file_dir = "/media/psf/hackrf-matlab-spectrum/iq-files"
-        self.chunk_time = chunk_time = 0.1
+        self.chunk_time = chunk_time = 0.2
         self.center_freq = center_freq = 100e6
         self.bandwidth = bandwidth = sampling_rate
 
@@ -94,41 +93,6 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         self.soapy_hackrf_source_0.set_gain(0, 'AMP', False)
         self.soapy_hackrf_source_0.set_gain(0, 'LNA', min(max(24, 0.0), 40.0))
         self.soapy_hackrf_source_0.set_gain(0, 'VGA', min(max(24, 0.0), 62.0))
-        self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
-            1024, #size
-            window.WIN_BLACKMAN_hARRIS, #wintype
-            center_freq, #fc
-            sampling_rate, #bw
-            "", #name
-            1, #number of inputs
-            None # parent
-        )
-        self.qtgui_waterfall_sink_x_0.set_update_time(1)
-        self.qtgui_waterfall_sink_x_0.enable_grid(False)
-        self.qtgui_waterfall_sink_x_0.enable_axis_labels(True)
-
-
-
-        labels = ['', '', '', '', '',
-                  '', '', '', '', '']
-        colors = [0, 0, 0, 0, 0,
-                  0, 0, 0, 0, 0]
-        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
-                  1.0, 1.0, 1.0, 1.0, 1.0]
-
-        for i in range(1):
-            if len(labels[i]) == 0:
-                self.qtgui_waterfall_sink_x_0.set_line_label(i, "Data {0}".format(i))
-            else:
-                self.qtgui_waterfall_sink_x_0.set_line_label(i, labels[i])
-            self.qtgui_waterfall_sink_x_0.set_color_map(i, colors[i])
-            self.qtgui_waterfall_sink_x_0.set_line_alpha(i, alphas[i])
-
-        self.qtgui_waterfall_sink_x_0.set_intensity_range(-100, -50)
-
-        self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.qwidget(), Qt.QWidget)
-
-        self.top_layout.addWidget(self._qtgui_waterfall_sink_x_0_win)
         self.epy_block_0 = epy_block_0.blk(file_dir=file_dir, sampling_rate=sampling_rate, center_freq=center_freq, bandwidth=bandwidth, chunk_time=chunk_time, queue_depth=4)
         self.blocks_correctiq_0 = blocks.correctiq()
 
@@ -137,7 +101,6 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.blocks_correctiq_0, 0), (self.epy_block_0, 0))
-        self.connect((self.blocks_correctiq_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.soapy_hackrf_source_0, 0), (self.blocks_correctiq_0, 0))
 
 
@@ -156,7 +119,6 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         self.sampling_rate = sampling_rate
         self.set_bandwidth(self.sampling_rate)
         self.epy_block_0.sampling_rate = self.sampling_rate
-        self.qtgui_waterfall_sink_x_0.set_frequency_range(self.center_freq, self.sampling_rate)
         self.soapy_hackrf_source_0.set_sample_rate(0, self.sampling_rate)
 
     def get_file_dir(self):
@@ -179,7 +141,6 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
     def set_center_freq(self, center_freq):
         self.center_freq = center_freq
         self.epy_block_0.center_freq = self.center_freq
-        self.qtgui_waterfall_sink_x_0.set_frequency_range(self.center_freq, self.sampling_rate)
         self.soapy_hackrf_source_0.set_frequency(0, self.center_freq)
 
     def get_bandwidth(self):

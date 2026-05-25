@@ -79,7 +79,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '0.1'
+    value: '0.2'
   states:
     bus_sink: false
     bus_source: false
@@ -103,7 +103,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 1e6
+    value: 20e6
   states:
     bus_sink: false
     bus_source: false
@@ -417,7 +417,7 @@ blocks:
     color9: '0'
     comment: ''
     fc: center_freq
-    fftsize: '1024'
+    fftsize: '8192'
     freqhalf: 'True'
     grid: 'False'
     gui_hint: ''
@@ -448,7 +448,7 @@ blocks:
     bus_structure: null
     coordinate: [864, 372.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: soapy_hackrf_source_0
   id: soapy_hackrf_source
   parameters:

@@ -13,11 +13,17 @@ classdef RealtimeWasserfall < handle
         
         iq_collected        % Прочитанные комплексные значения
         wasserfall_data     % Матрица спектра для водопада
+        wasserfall_row      % Текущая строчка wasserfall_data, куда записываются свежие IQ
         
         % Для отображения
         wasserfall_figure
         wasserfall_axes
         wasserfall_image
+        structured_data
+        fft_size_divider    % То, во сколько раз отображаемое значение fft size меньше реального
+
+        % Окно FFT
+        fft_window
 
     end
 
