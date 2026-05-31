@@ -1,0 +1,209 @@
+{
+  "main": {
+    "id": "d4522bff5bc2c027",
+    "type": "split",
+    "children": [
+      {
+        "id": "ffb9b4334f99b38a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9106e84c4b0039ae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20 - Старый и новый pipeline.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "20 - Старый и новый pipeline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f8637fe2cca7e095",
+    "type": "split",
+    "children": [
+      {
+        "id": "2694ccbd941f50af",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5402b5db740f0c6d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "6ab673f98e303385",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "415140e5e65c004e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "feef7a783c06ce29",
+    "type": "split",
+    "children": [
+      {
+        "id": "1751e910627bc4fe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c383206215a1e9c1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "20 - Старый и новый pipeline.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для 20 - Старый и новый pipeline"
+            }
+          },
+          {
+            "id": "fff01e7c0ccc9898",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "20 - Старый и новый pipeline.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из 20 - Старый и новый pipeline"
+            }
+          },
+          {
+            "id": "ca5815ce6c70f4a0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "8721595d9e13bc62",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "b2fc7c355d18d326",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "20 - Старый и новый pipeline.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура 20 - Старый и новый pipeline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "9106e84c4b0039ae",
+  "lastOpenFiles": [
+    "19 - Проверка архитектуры.md",
+    "18 - Сценарии использования.md",
+    "17 - Архитектурные решения.md",
+    "16 - История рефакторинга.md",
+    "15 - Полезные ссылки MATLAB.md",
+    "14 - Глоссарий.md",
+    "13 - Следующие шаги.md",
+    "12 - Переход к сети.md",
+    "11 - Формат IQ-данных.md",
+    "10 - Жизненный цикл файлов.md",
+    "09 - JSONL и файловый курсор.md",
+    "08 - RealtimeFileDataSource.md",
+    "07 - RecordedFileDataSource.md",
+    "06 - FileDataSource.md",
+    "05 - Configurator.md",
+    "04 - Контракт источника данных.md",
+    "03 - Текущая архитектура источников данных.md",
+    "02 - Пирамидальная декомпозиция.md",
+    "01 - Архитектурная цель.md",
+    "00 - Карта архитектуры.md"
+  ]
+}
