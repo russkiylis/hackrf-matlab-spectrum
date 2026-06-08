@@ -30,6 +30,8 @@ classdef RealtimeFileDataSource < FileDataSource
             % Удаляем файлы, если есть соответствующий флажок.
             % Файл, который в данный момент пишется, не затронется, так как
             % он имеет пометку .tmp
+            % ЛУЧШЕ ПЕРЕДЕЛАТЬ
+            % ЛУЧШЕ ПЕРЕДЕЛАТЬ
             if obj.delete_files_flag
                 delete(fullfile(obj.folder_path, "*.cf32"));
             end

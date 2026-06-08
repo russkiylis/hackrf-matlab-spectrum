@@ -65,7 +65,7 @@ class hackrf_iq_gen(gr.top_block, Qt.QWidget):
         ##################################################
         self.sampling_rate = sampling_rate = 20e6
         self.file_dir = file_dir = "/media/psf/hackrf-matlab-spectrum/iq-files"
-        self.chunk_time = chunk_time = 0.2
+        self.chunk_time = chunk_time = 0.2097152
         self.center_freq = center_freq = 100e6
         self.bandwidth = bandwidth = sampling_rate
 

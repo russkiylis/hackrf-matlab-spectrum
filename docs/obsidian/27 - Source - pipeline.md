@@ -3,7 +3,7 @@ tags:
   - source
   - matlab
   - pipeline
-  - legacy
+  - refactoring
 ---
 
 # Source: pipeline.m
@@ -18,29 +18,27 @@ matlab/pipeline.m
 
 ## Роль
 
-Текущая входная точка старой версии программы.
+Текущая входная точка программы во время архитектурного рефакторинга.
 
 ## Текущее состояние
 
-Pipeline пока создаёт `RealtimeWasserfall` и вызывает у него чтение metadata, чтение IQ и отрисовку.
+Pipeline уже создаёт источник данных через `Configurator` и получает очередные IQ и metadata через единый контракт.
 
 ```matlab
-wasserfall = RealtimeWasserfall();
+configurator = Configurator(cfg);
+data_source = configurator.getDataSource();
 
 while true
-    line = wasserfall.readMetadata();
-    wasserfall.readIQ();
-    wasserfall.drawWasserfall(...);
+    [iq_complex, metadata] = data_source.nextData();
 end
 ```
 
 ## Следующий этап
 
-Подключить `Configurator` и новый источник данных перед выделением математического блока.
+Подключить отдельный математический блок и блок вывода.
 
 ## Связанные заметки
 
 - [[20 - Старый и новый pipeline]]
 - [[13 - Следующие шаги]]
 - [[21 - Исходники проекта]]
-

@@ -27,6 +27,4 @@ function obj = purge(obj)
         disp("Папки с IQ-файлами на месте не оказалось, так что просто создам новую...");
     end
         mkdir(obj.iq_dir);
-
-    
 end

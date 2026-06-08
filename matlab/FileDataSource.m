@@ -14,7 +14,7 @@ classdef (Abstract) FileDataSource < handle
             obj.folder_path = folder_path;
             obj.metadata_path = fullfile(obj.folder_path, "metadata.jsonl");
 
-            % Открываем файл metadata
+            % Открываем файл metadatыsыa
             obj.metadata_fid = fopen(obj.metadata_path, "r");   % Открытие файла metadata
             if obj.metadata_fid == -1
                 error("FileDataSource:MetadataOpenFailed", "Файл metadata.jsonl не открылся!");
@@ -27,6 +27,38 @@ classdef (Abstract) FileDataSource < handle
                 fclose(obj.metadata_fid);   % Закрываем файл jsonl
                 obj.metadata_fid = -1;
             end
+        end
+
+        function obj = purge(obj)
+            % Очищение папки IQ-файлов
+
+            messages = [
+                "Казнь всей папки с IQ-файлами...",...
+                "Низвержение IQ в ноль...",...
+                "Аннигиляция IQ-файлов началась...",...
+                "Отправляю чанки в цифровое небытие...",...
+                "Освобождаю диск от комплексных воспоминаний...",...
+                "Диск снова делает вид, что ничего не было...",...
+                "Комплексные числа покидают чат...",...
+                "Очищаю эфир от вчерашних решений..."
+            ];
+            disp(messages(randi(numel(messages))));
+
+
+            % Проверка на закрытие jsonl файла
+            if obj.metadata_fid ~= -1
+                fclose(obj.metadata_fid);
+                obj.metadata_fid = -1;
+            end
+
+            % Непосредственно очистка
+            try
+                rmdir(obj.folder_path, "s");
+            catch exception
+                disp("Папки с IQ-файлами на месте не оказалось, так что просто создам новую...");
+            end
+
+            mkdir(obj.folder_path);
         end
     end
 
